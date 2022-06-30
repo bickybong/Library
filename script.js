@@ -15,25 +15,29 @@ function addBookToLibrary(book){
 
 function bookCard(){
     for (const obj of library){
+        const bookCards = document.createElement('div');
+        bookCards.classList.add('bookCards');
+        booksContainer.appendChild(bookCards);
+
         const title = document.createElement('h2');
         title.classList.add('title');
         title.textContent = obj.title;
-        booksContainer.appendChild(title);
+        bookCards.appendChild(title);
 
         const author = document.createElement('div');
         author.classList.add('author');
         author.textContent = obj.author;
-        booksContainer.appendChild(author);
+        bookCards.appendChild(author);
 
         const page = document.createElement('div');
         page.classList.add('page');
         page.textContent = obj.page;
-        booksContainer.appendChild(page);
+        bookCards.appendChild(page);
 
         const read = document.createElement('div');
         read.classList.add('read');
         read.textContent = obj.read;
-        booksContainer.appendChild(read);
+        bookCards.appendChild(read);
     }
 }
 

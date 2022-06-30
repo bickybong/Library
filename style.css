@@ -1,3 +1,55 @@
 :root{
-    
+    --ppl: #9333ea;
+    --red: #EA3833;
+    --green: #8AEA33;
+    --blue: #33E5EA;
+    --grey: #e7e5e4;
+    --white: azure;
+    --darkGreen: darkolivegreen;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--darkGreen);
+    display: flex;
+    flex-flow: column;
+    gap: 5vh;
+}
+
+#header{
+    background-color: var(--ppl);
+    width: 100vw;
+}
+
+#header h1{
+    margin-left: 40vw;
+    margin-right: 40vw;
+    color: var(--green);
+}
+
+#booksContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.bookCards{
+    background-color: var(--blue);
+    border-radius: 1rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3vw;
+}
+
+#add{
+    align-self: center;
+    padding: 3vw;
+    border-radius: 5vw;
+    border: var(--red) solid 1px;
+    font-weight: bold;
 }
