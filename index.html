@@ -7,6 +7,8 @@
     <title>Library</title>
     <script src="script.js" defer></script>
     <link rel = "stylesheet" href = "style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
     <div id="header">
@@ -14,6 +16,39 @@
     </div>
     <div id="booksContainer">
     </div>
-    <button id="add">Add books</button>
+    <button id="add" onclick="openForm()">Add books</button>
+
+    <div class="loginPopup">
+    <div class="formPopup" id="popupForm">
+        <form name="newBook"  class="formContainer" id="formContainer">
+        <h2>New Book</h2>
+        <label for="bookName"><strong>Book Name</strong></label>
+        <input type="text" id="newTitle" placeholder="book name" name="title" required>
+        
+        <label for="author"><strong>Author</strong></label>
+        <input type="text" id="author" placeholder="author" name="author" required>
+
+        <label for="pages"><strong>Pages</strong></label>
+        <input type="number" id="pages" placeholder="pages" name="page" required>
+
+         
+        <fieldset>
+            <legend>Have you read it?</legend>
+            <div>
+            <input type="radio" name="read" id="read" value="Read" checked required>
+            <label for="read">Read</label>
+            </div>
+
+            <div>
+            <input type="radio" name="read" id="unread" value="Not Read">
+            <label for="unread">Not Read</label>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    </div>
 </body>
 </html>
