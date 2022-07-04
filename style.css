@@ -111,3 +111,16 @@ body{
   .openButton:hover {
     opacity: 1;
   }
+
+  .butContainer{
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem;
+  }
+
+  .butContainer button{
+    border-radius: 50%;
+    border: None;
+    background-color: var(--white);
+    padding: 1vw;
+  }

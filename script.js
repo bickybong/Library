@@ -14,12 +14,10 @@ function addBookToLibrary(book){
 
 function bookCard(){
     booksContainer.textContent='';
-    count = 0
     for (const obj of library){
         
         const bookCards = document.createElement('div');
-        bookCards.classList.add('bookCards', count);
-        bookCards.classList.add(count);
+        bookCards.classList.add('bookCards');
         booksContainer.appendChild(bookCards);
 
         const title = document.createElement('h2');
@@ -42,19 +40,36 @@ function bookCard(){
         read.textContent = obj.read;
         bookCards.appendChild(read);
 
+        const butContainer = document.createElement('div');
+        butContainer.classList.add('butContainer');
+        bookCards.appendChild(butContainer);
+
         const del = document.createElement('button');
-        del.classList.add(count);
         del.innerHTML = '<span class="material-icons">delete</span>';
-        bookCards.appendChild(del);
+        butContainer.appendChild(del);
+        del.dataset.id = library.indexOf(obj)
 
         const unread = document.createElement('button');
         unread.classList.add('unread');
         unread.innerHTML = '<span class="material-icons">check_box</span>';
-        bookCards.appendChild(unread);
-        del.onclick = ()=>{cardDelete(count)};
-        unread.onclick = () =>{cardRead(count)};
-        ++count;
+        butContainer.appendChild(unread);
+        del.onclick = ()=>{cardDelete(del.dataset.id)};
+        unread.onclick = () =>{cardRead(del.dataset.id)};
     }
+}
+
+function cardDelete(index){ //delete books button
+    library.splice(index,1);
+    bookCard();
+}
+
+function cardRead(index){ //toggle read status button
+    if (library[index].read === "Read") {
+        library[index].read = "Not Read";
+    } else{
+        library[index].read = "Read";
+    }
+    bookCard();
 }
 
 book1 = new book("Never get lost", "Wilhelm Thaller", 260, "Not Read")
@@ -64,7 +79,7 @@ addBookToLibrary(book2)
 // console.log(library)
 bookCard()
 
-function openForm() {
+function openForm() { //pop up form
     document.getElementById("popupForm").style.display = "block";
 }
 function closeForm() {
@@ -75,29 +90,13 @@ const form = document.querySelector('#formContainer');
 
 form.addEventListener('submit', callbackFunction);
 
-function callbackFunction(event) {
+function callbackFunction(event) { //Use data in form to add object to library
     event.preventDefault();
     const myFormData = new FormData(event.target);
     const formDataObj = Object.fromEntries(myFormData.entries());
     console.log(formDataObj);
     addBookToLibrary(formDataObj);
     bookCard();
-    form.reset();
+    form.reset(); //reset form after submission
     document.getElementById("popupForm").style.display = "none";
 };
-
-
-function cardDelete(count){
-    library.pop(count);
-    bookCard();
-}
-
-function cardRead(count){
-    console.log(library[0]["read"])
-    if (library[count]["read"] === "Read") {
-        library[count]["read"] = "Not Read";
-    } else{
-        library[count]["read"] = "Not Read";
-    }
-    bookCard();
-}
